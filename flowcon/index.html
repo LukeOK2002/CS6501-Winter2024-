@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flowcon Technology – Flow Control Solutions</title>
+<style>
+:root{--navy:#0b1f3a;--blue:#1565c0;--light:#eaf2fb;--text:#26364a;--muted:#6b7a90;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);line-height:1.6;background:var(--white)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.topbar{background:var(--navy);color:#cfe0f5;font-size:.85rem}
+.topbar .wrap{display:flex;justify-content:flex-end;gap:24px;padding:8px 20px}
+header.main{position:sticky;top:0;z-index:50;background:var(--white);box-shadow:0 1px 8px rgba(0,0,0,.08)}
+header.main .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:800;font-size:1.5rem;color:var(--navy);letter-spacing:-.5px}
+.logo span{color:var(--blue)}
+nav ul{display:flex;list-style:none;gap:26px;align-items:center}
+nav li{position:relative}
+nav a.l{font-weight:600;font-size:.95rem;padding:8px 0}
+nav a.l:hover{color:var(--blue)}
+.sub{display:none;position:absolute;top:100%;left:-12px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.12);border-radius:6px;min-width:210px;padding:8px 0}
+.sub a{display:block;padding:8px 16px;font-size:.9rem}
+.sub a:hover{background:var(--light)}
+nav li:hover .sub{display:block}
+.btn{display:inline-block;background:var(--blue);color:#fff;padding:12px 26px;border-radius:6px;font-weight:600;border:0;cursor:pointer;font-size:1rem;transition:.2s}
+.btn:hover{background:#0d47a1;transform:translateY(-1px)}
+.btn.ghost{background:transparent;border:2px solid #fff}
+.btn.ghost:hover{background:#fff;color:var(--navy)}
+.burger{display:none;background:none;border:0;font-size:1.8rem;cursor:pointer}
+.hero{background:linear-gradient(135deg,rgba(11,31,58,.95),rgba(21,101,192,.85)),repeating-linear-gradient(45deg,#0b1f3a 0 12px,#10294a 12px 24px);color:#fff;padding:120px 0 130px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;max-width:720px;margin-bottom:20px}
+.hero p{max-width:560px;font-size:1.15rem;color:#d6e6fa;margin-bottom:32px}
+.hero .btns{display:flex;gap:14px;flex-wrap:wrap}
+.flow{position:absolute;right:-60px;bottom:-40px;width:520px;opacity:.25}
+section{padding:80px 0}
+.eyebrow{color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:.8rem;margin-bottom:8px}
+h2{font-size:2.1rem;color:var(--navy);line-height:1.2;margin-bottom:14px}
+.center{text-align:center}
+.center p.lead{max-width:640px;margin:0 auto 10px}
+.partners{background:var(--light);padding:40px 0;overflow:hidden}
+.partners h3{text-align:center;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:22px}
+.track{display:flex;gap:60px;width:max-content;animation:scroll 28s linear infinite}
+.track:hover{animation-play-state:paused}
+.track span{font-weight:800;font-size:1.4rem;color:#8ea3bd;white-space:nowrap}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:40px}
+.card{border:1px solid #dde6f1;border-radius:10px;padding:30px;background:#fff;transition:.25s}
+.card:hover{box-shadow:0 12px 30px rgba(21,101,192,.15);transform:translateY(-4px);border-color:var(--blue)}
+.card .ic{width:48px;height:48px;border-radius:10px;background:var(--light);color:var(--blue);display:grid;place-items:center;font-size:1.5rem;margin-bottom:16px}
+.card h3{color:var(--navy);margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.card a{color:var(--blue);font-weight:600;font-size:.9rem}
+.about{background:var(--navy);color:#d6e6fa}
+.about h2{color:#fff}
+.about .cols{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.stat{background:rgba(255,255,255,.07);border-radius:10px;padding:24px;text-align:center}
+.stat b{display:block;font-size:2.2rem;color:#fff}
+.services{background:var(--light)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;margin-top:40px}
+.step{background:#fff;border-radius:10px;padding:28px;border-top:4px solid var(--blue)}
+.step .n{font-size:2rem;font-weight:800;color:#c3d6ee}
+.step h3{color:var(--navy);margin:4px 0 6px}
+.step p{font-size:.93rem;color:var(--muted)}
+.contact .cols{display:grid;grid-template-columns:1fr 1.2fr;gap:50px}
+.info p{margin:10px 0}
+form{display:grid;gap:14px}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input,textarea,select{width:100%;padding:12px 14px;border:1px solid #c9d6e6;border-radius:6px;font:inherit}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--blue);border-color:transparent}
+textarea{min-height:130px;resize:vertical}
+#msg{color:#1b7f3b;font-weight:600;min-height:1.4em}
+footer{background:#07152a;color:#9fb3cc;padding:56px 0 20px;font-size:.92rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:36px}
+footer h4{color:#fff;margin-bottom:12px}
+footer li{list-style:none;margin:6px 0}
+footer a:hover{color:#fff}
+footer .copy{border-top:1px solid #1b2f4d;margin-top:36px;padding-top:18px;font-size:.82rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.reveal{opacity:0;transform:translateY(24px);transition:.7s}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:900px){
+ .topbar{display:none}
+ .burger{display:block}
+ nav{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;padding:16px 20px;box-shadow:0 10px 20px rgba(0,0,0,.1)}
+ nav.open{display:block}
+ nav ul{flex-direction:column;align-items:flex-start;gap:12px}
+ .sub{position:static;display:block;box-shadow:none;padding:0 0 0 12px}
+ .about .cols,.contact .cols,footer .cols{grid-template-columns:1fr}
+ .grid{grid-template-columns:1fr}
+ form .row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span>📞 +353 21 4295822</span><span>✉ info@flowcon.ie</span></div></div>
+
+<header class="main"><div class="wrap">
+  <a href="#top" class="logo">Flow<span>con</span></a>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+  <nav id="nav"><ul>
+    <li><a class="l" href="#solutions">Gas</a></li>
+    <li><a class="l" href="#solutions">Liquid ▾</a>
+      <div class="sub"><a href="#solutions">Liquid Flow Metering</a><a href="#solutions">Fluid Dosing Solutions</a></div></li>
+    <li><a class="l" href="#solutions">Pressure</a></li>
+    <li><a class="l" href="#solutions">Vapour</a></li>
+    <li><a class="l" href="#solutions">Environmental</a></li>
+    <li><a class="btn" href="#contact">Contact us</a></li>
+  </ul></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <h1>Master Your Flow Control with Precision</h1>
+  <p>Bespoke flow control solutions for industrial and research environments, designed, supplied and supported by specialists.</p>
+  <div class="btns"><a class="btn" href="#solutions">Explore solutions</a><a class="btn ghost" href="#contact">Talk to an expert</a></div>
+</div>
+<svg class="flow" viewBox="0 0 400 200" fill="none" stroke="#fff" stroke-width="3"><path d="M0 40 C80 0 120 80 200 40 S320 0 400 40"/><path d="M0 100 C80 60 120 140 200 100 S320 60 400 100"/><path d="M0 160 C80 120 120 200 200 160 S320 120 400 160"/></svg>
+</div>
+
+<div class="partners"><h3>Trusted Partners</h3>
+  <div class="track" id="track"></div>
+</div>
+
+<section id="solutions"><div class="wrap">
+  <div class="center reveal"><div class="eyebrow">What we do</div><h2>Our Solutions</h2>
+  <p class="lead">From gas to liquid, pressure to dosing, we match the right technology to your process.</p></div>
+  <div class="grid" id="cards"></div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap cols">
+  <div class="reveal"><div class="eyebrow" style="color:#7fb6ff">About Flowcon</div>
+    <h2>Your trusted partner in flow control</h2>
+    <p>Based in Cork, Flowcon delivers specialist gas and liquid flow control solutions to customers across Ireland. We combine leading instrumentation with practical engineering advice, so your system performs from day one and stays accurate for years.</p>
+    <br><a class="btn" href="#contact">Get in touch</a></div>
+  <div class="stats reveal">
+    <div class="stat"><b data-n="25">0</b>Years experience</div>
+    <div class="stat"><b data-n="500">0</b>Systems delivered</div>
+    <div class="stat"><b data-n="40">0</b>Partner brands</div>
+    <div class="stat"><b data-n="100">0</b>% Support focus</div>
+  </div>
+</div></section>
+
+<section class="services"><div class="wrap">
+  <div class="center reveal"><div class="eyebrow">Beyond the product</div><h2>A Complete Service Package</h2></div>
+  <div class="steps" id="steps"></div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap cols">
+  <div class="info reveal"><div class="eyebrow">Contact</div><h2>Let's discuss your application</h2>
+    <p>Tell us about your process and we'll recommend the right solution.</p>
+    <p><b>Flowcon Technology</b><br>Cork, Ireland</p>
+    <p>📞 +353 21 4295822<br>✉ info@flowcon.ie</p></div>
+  <form id="form" class="reveal">
+    <div class="row"><input required name="name" placeholder="Name"><input required type="email" name="email" placeholder="Email"></div>
+    <select name="topic"><option>General enquiry</option><option>Gas</option><option>Liquid</option><option>Pressure</option><option>Vapour</option><option>Environmental</option></select>
+    <textarea required name="message" placeholder="How can we help?"></textarea>
+    <button class="btn" type="submit">Send enquiry</button><div id="msg"></div>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><a href="#top" class="logo" style="color:#fff">Flow<span>con</span></a><p style="margin-top:12px">Specialist gas and liquid flow control solutions for industry and research.</p></div>
+    <div><h4>Products</h4><ul><li><a href="#solutions">Gas</a></li><li><a href="#solutions">Liquid</a></li><li><a href="#solutions">Pressure</a></li><li><a href="#solutions">Vapour</a></li><li><a href="#solutions">Environmental</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#about">About us</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>+353 21 4295822</li><li>info@flowcon.ie</li><li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+  </div>
+  <div class="copy"><span>© <span id="yr"></span> Flowcon Technology. All rights reserved.</span><span>Recreation for educational purposes</span></div>
+</div></footer>
+
+<script>
+const solutions=[
+ ["💨","Gas Flow Solutions","Mass flow meters and controllers for accurate process gas control."],
+ ["💧","Liquid Flow Metering","Thermal, Coriolis and ultrasonic options for any liquid."],
+ ["🎚️","Pressure Control","Electronic pressure controllers and sensors."],
+ ["🌿","Environmental","Hygienic-standard instruments for pharma and food."],
+ ["🧪","Liquid Dosing","Precision Coriolis-based dosing systems."],
+ ["🛠️","Custom Solutions","Bespoke systems designed around your process."]];
+document.getElementById('cards').innerHTML=solutions.map(s=>`<div class="card reveal"><div class="ic">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p><a href="#contact">Learn more →</a></div>`).join('');
+const steps=[["System Design","Application engineering to specify the right components."],["Training","Hands-on training for your operators and engineers."],["Calibration","Traceable calibration to keep measurements accurate."],["Maintenance","Servicing and support throughout the product life."]];
+document.getElementById('steps').innerHTML=steps.map((s,i)=>`<div class="step reveal"><div class="n">0${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');
+const partners=["PARTNER ONE","PARTNER TWO","PARTNER THREE","PARTNER FOUR","PARTNER FIVE","PARTNER SIX"];
+const t=document.getElementById('track');
+t.innerHTML=[...partners,...partners].map(p=>`<span>${p}</span>`).join('');
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('burger').onclick=()=>document.getElementById('nav').classList.toggle('open');
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();document.getElementById('msg').textContent='Thanks – we\'ll be in touch shortly.';e.target.reset()});
+const count=el=>{const n=+el.dataset.n;let c=0;const id=setInterval(()=>{c+=Math.ceil(n/40);if(c>=n){c=n;clearInterval(id)}el.textContent=c},30)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('[data-n]').forEach(count);io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
